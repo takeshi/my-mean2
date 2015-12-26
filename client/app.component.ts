@@ -9,7 +9,7 @@ import {UserComponent} from './user.component';
 ])
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/app.html',
+    templateUrl: 'client/app.html',
     directives:[Router.ROUTER_DIRECTIVES]
 })
 export class AppComponent {

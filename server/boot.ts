@@ -7,7 +7,7 @@ var app = express();
 
 mongo.init();
 
-["node_modules","app","share"].forEach((dir) => {
+["node_modules","client","share"].forEach((dir) => {
     app.use('/' + dir, express.static('./' + dir));
 });
 

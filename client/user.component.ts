@@ -3,7 +3,7 @@ import {User} from '../share/model';
 
 @Component({
     selector: 'my-user',
-    templateUrl:'app/user.html'
+    templateUrl:'client/user.html'
 })
 export class UserComponent { 
     

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc:client": "tsc -w -p ./app/",
+    "tsc:client": "tsc -w -p ./client/",
     "tsc:server": "tsc -w",
     "tsc:share": "tsc -w -p ./share/",
     "livereloead": "node livereload",
