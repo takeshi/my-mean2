@@ -3,14 +3,11 @@ import {User} from '../share/model';
 
 @Component({
     selector: 'my-app',
-    template: `
-    <div class="container">
-        <h1>My First Angular 2 App</h1>
-    </div>
-    `
+    templateUrl:'app/app.html'
 })
 export class AppComponent { 
     
     user = new User();
     
 }
+

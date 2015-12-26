@@ -1,3 +1,6 @@
 export class User{
-    firstName:string = 'firstName';
+
+    firstName:string;
+    lastName:string;
+
 }
