@@ -1,1 +1,1 @@
-require('./server-bin/server/boot')
+require('./dist/server/server/boot')

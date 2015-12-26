@@ -1,9 +1,3 @@
 node_modules
-app/*.js
-server/*.js
-share/*.js
-app/*.js.map
-server/*.js.map
-share/*.js.map
-
-server-bin
+dist
+.DS_Store

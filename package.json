@@ -11,7 +11,7 @@
     "livereloead": "node livereload",
     "mongo": "mongod",
     "server": "node-dev index.js",
-    "start": "concurrent \"npm run server\" \"npm run livereloead\" \"npm run tsc:server\" \"npm run tsc:client\"  \"npm run tsc:share\" \"npm run mongo\" "
+    "start": "concurrent \"npm run server\" \"npm run livereloead\" \"npm run tsc:server\" \"npm run tsc:client\"  \"npm run mongo\" "
   },
   "dependencies": {
     "angular2": "2.0.0-beta.0",

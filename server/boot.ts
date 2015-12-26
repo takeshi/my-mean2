@@ -7,11 +7,12 @@ var app = express();
 
 mongo.init();
 
-["node_modules", "app", "share"].forEach((dir) => {
-    app.use('/' + dir, express.static(__dirname + '/../../' + dir));
+["node_modules","app","share"].forEach((dir) => {
+    app.use('/' + dir, express.static('./' + dir));
 });
 
-app.use(express.static(__dirname + '/../../public'));
+app.use(express.static('./public'));
+app.use(express.static('./dist/client'));
 
 app.listen(3010, () => {
     console.log('start server 3010');
