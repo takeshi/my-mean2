@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
+
     <title>Angular 2 QuickStart</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,14 +10,21 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 
     <!-- 1. Load libraries -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/tether/dist/js/tether.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
+
 
     <!-- 2. Configure SystemJS -->
     <script>
-      System.config({
+        System.config({
         packages: {        
           app: {
             format: 'register',
@@ -33,16 +41,17 @@
             .then(null, console.error.bind(console));
     </script>
 
-  </head>
+</head>
 
-  <!-- 3. Display the application -->
-  <body>
+<!-- 3. Display the application -->
+
+<body>
     <my-app>Loading...</my-app>
-  </body>
+</body>
 
-    <script>
+<script>
     document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
     ':35729/livereload.js?snipver=1"></' + 'script>')
-    </script>
+</script>
 
 </html>

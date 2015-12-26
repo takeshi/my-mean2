@@ -18,4 +18,4 @@ app.listen(3010, () => {
 });
 
 import * as user from './user';
-app.use('/user', user.app);
+app.use('/app/user', user.app);
