@@ -1,7 +1,7 @@
 /// <reference path="./materializecss" />
 
 import {Component, OnInit} from 'angular2/core';
-import {User} from '../share/model';
+import {User, Validator, ValidationResult} from '../share/model';
 import {Http, Headers} from 'angular2/http';
 import {HttpManager} from './util/http';
 import {materialize} from './materializecss';
@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
     users: User[];
 
     private getUsers(callback?: (users: User[]) => void) {
+
         this.httpManager.get('/app/user')
             .subscribe((res) => {
                 this.users = res.json();
@@ -32,12 +33,14 @@ export class UserComponent implements OnInit {
     }
 
     submit() {
-        
+
         this.httpManager.post('/app/user', this.user)
             .subscribe((res) => {
-                console.log("aa",res);
-                materialize.toast('successs', 1000);
+                console.log("result", res.json());
             });
+
+        var results = Validator.validate(User, this.user);
+        console.log(results);
         console.log(this.user);
     }
 

@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import {User} from '../../share/model';
+export {User} from '../../share/model';
 
 export interface IUser extends User, mongoose.Document {
 
