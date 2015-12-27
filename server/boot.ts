@@ -1,4 +1,5 @@
 /// <reference path="../typings/tsd.d.ts" />
+import * as angular2 from 'angular2/core';
 
 import * as express from 'express';
 import * as mongo from './mongo';
@@ -27,4 +28,4 @@ var subRouters = ['user']
 subRouters.forEach((router) => {
     var subapp = require('./' + router);
     app.use('/app/' + router, subapp.app);
-})
+});
