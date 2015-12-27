@@ -11,8 +11,8 @@ export interface IUserModel extends mongoose.Model<IUser> {
 
 var userSchema: mongoose.Schema = new mongoose.Schema(
     {
-        firstName: String,
-        lastName: String,
+        password: String,
+        email: String
     },
     {
         collection: 'User'

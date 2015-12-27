@@ -3,7 +3,6 @@ import * as user from './model/user';
 
 export var app = express();
 
-
 app.get('/', (req, res) => {
     console.log('/user');
     user.UserModel.find({}, (err, users) => {
@@ -13,4 +12,11 @@ app.get('/', (req, res) => {
         }
         res.json(users);
     });
+});
+
+app.post('/', (req, res) => {
+
+    console.log(req.body);
+    res.json(req.body);
+    
 });

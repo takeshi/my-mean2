@@ -1,14 +1,15 @@
-<nav class="navbar navbar-static-top navbar-light bg-faded">
-    <a href="#" class="navbar-brand">White Hat</a>
-    <ul class="nav navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['UserComponent']" >user</a>
-        </li>
-    </ul>
+<nav>
+    <div class="green accent-4 nav-wrapper">
+        <a href="#" class="brand-logo left">Green Hat</a>
+        <ul class="right">
+            <li><a [routerLink]="['UserComponent']" >user</a></li>
+        </ul>
+    </div>
 </nav>
+<!-- /.container -->
 
 <div class="container marketing">
-
+   
     <!-- Three columns of text below the carousel -->
     <router-outlet></router-outlet>
 
