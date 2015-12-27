@@ -12,15 +12,19 @@ mongo.init();
     app.use('/' + dir, express.static('./' + dir));
 });
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json());
-
 app.use(express.static('./public'));
 app.use(express.static('./dist/client'));
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 
 app.listen(3010, () => {
     console.log('start server 3010');
 });
 
-import * as user from './user';
-app.use('/app/user', user.app);
+var subRouters = ['user']
+
+subRouters.forEach((router) => {
+    var subapp = require('./' + router);
+    app.use('/app/' + router, subapp.app);
+})

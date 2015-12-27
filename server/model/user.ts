@@ -2,12 +2,8 @@ import * as mongoose from 'mongoose';
 import {User} from '../../share/model';
 export {User} from '../../share/model';
 
-export interface IUser extends User, mongoose.Document {
+export interface UserDocument extends User, mongoose.Document {
 
-}
-
-export interface IUserModel extends mongoose.Model<IUser> {
-    findByName(name, cb);
 }
 
 var userSchema: mongoose.Schema = new mongoose.Schema(
@@ -20,4 +16,8 @@ var userSchema: mongoose.Schema = new mongoose.Schema(
     }
 );
 
-export var UserModel = <IUserModel>mongoose.model('User', userSchema);
+interface _UserModel extends mongoose.Model<UserDocument> {
+
+}
+
+export var UserModel = <_UserModel>mongoose.model('User', userSchema);
