@@ -1,14 +1,25 @@
 <div class="row">
     <hr />
-    <a class="waves-effect waves-light btn" (click)="preview=false">Input</a>
-    <a class="waves-effect waves-light btn" (click)="preview=true">Preview</a>
-    <hr />
+    <div class="right">
+        <a *ngIf="preview===true" class="waves-effect waves-light btn" (click)="preview=false">Back</a>
+        <a *ngIf="preview===false" class="waves-effect waves-light btn" (click)="preview=true">Preview</a>
+    </div>
 
     <form class="col s12" *ngIf="preview === false">
+
         <div class="input-field col s12">
-            <h6 class="input-label" >Title</h6>
+            <h6 class="input-label">Tracker</h6>
+            <select materializedSelect>
+                <option *ngFor="#tracker of trackers" [value]="tracker">{{tracker.name}}</option>
+            </select>
+        </div>
+        
+
+        <div class="input-field col s12">
+            <h6 class="input-label">Title</h6>
             <input id="title" [(ngModel)]="ticket.title" type="text">
         </div>
+
 
         <div class="input-field col s12">
             <h6 class="input-label">Description</h6>

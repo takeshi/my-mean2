@@ -12,7 +12,7 @@ interface _Materialize {
 declare var Materialize: _Materialize;
 export var materialize = Materialize;
 
-import {Directive, ElementRef, Renderer, Input, OnInit } from 'angular2/core';
+import {Directive, ElementRef, Renderer, Input, OnInit,OnChanges } from 'angular2/core';
 
 @Directive({
     selector: '[materializedTextarea]',
@@ -30,7 +30,26 @@ export class MaterializedTextarea implements OnInit {
 
     @Input('ngModel')
     desc: string;
-    
-    
+
+}
+
+@Directive({
+    selector: '[materializedSelect]',
+})
+export class MaterializedSelect implements OnInit {
+
+    constructor(private el: ElementRef, renderer: Renderer) {
+    }
+
+    ngOnInit() {
+        var $target: any = jQuery(this.el.nativeElement);
+        setTimeout(()=>{
+            $target.material_select();        
+        },100);
+    }
+
+    @Input('ngModel')
+    desc: string;
+
 }
 

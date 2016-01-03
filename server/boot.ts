@@ -21,7 +21,7 @@ app.listen(3000, () => {
     console.log('start server 3000');
 });
 
-var subRouters = ['user']
+var subRouters = ['user','tracker']
 
 subRouters.forEach((router) => {
     var subapp = require('./router/' + router);
