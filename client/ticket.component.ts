@@ -20,20 +20,8 @@ export class TicketComponent implements OnInit {
 - list
 - list
 - list
+`;
 
-### imput
-
-    sample
-    sample
-    sample
-
-
-1. test
-1. test
-1. test
-1. test
-        
-        `;
     }
 
     markdown() {
@@ -42,7 +30,6 @@ export class TicketComponent implements OnInit {
             return "";
         }
         var html = markdown.toHTML(this.ticket.desc);
-        console.log(JSON.stringify(this.ticket.desc),html);
         return html;
     }
 
