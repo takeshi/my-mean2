@@ -1,9 +1,11 @@
-export {User} from '../../share/model';
-import {User} from '../../share/model';
-import {db} from '../db';
-import * as sequelize from 'sequelize';
-
 "use strict";
+
+import * as share from '../../share/model/user';
+import * as sequelize from 'sequelize';
+import {db} from '../db';
+
+export interface User extends share.User, sequelize.Instance<share.User, {}> {
+}
 
 export var UserRepository = db.define<User, {}>('user', {
     email: {
@@ -16,3 +18,4 @@ export var UserRepository = db.define<User, {}>('user', {
         }
     }
 });
+

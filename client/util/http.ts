@@ -1,7 +1,5 @@
-import * as rx from 'rxjs';
 import {Http, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/core';
-
 
 @Injectable()
 export class HttpManager {
