@@ -1,10 +1,11 @@
-/// <reference path="./materializecss" />
+/// <reference path="../typings/lodash/lodash" />
 
 import {Component, OnInit} from 'angular2/core';
 import {User, Validator, ValidationResult} from '../share/model';
 import {Http, Headers} from 'angular2/http';
 import {HttpManager} from './util/http';
-import {materialize} from './materializecss';
+import {materialize} from './util/materialize';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'my-user',
@@ -32,23 +33,47 @@ export class UserComponent implements OnInit {
 
     }
 
+    errors: _.Dictionary<ValidationResult[]>;
+
     submit() {
+        var errors = Validator.validate(User, this.user);
+        if (errors) {
+            this.errors = _.groupBy(errors, (err) => {
+                return err.field
+            });
+            console.log(this.errors);
+            return;
+        }
+        this.errors = {};
 
         this.httpManager.post('/app/user', this.user)
             .subscribe((res) => {
                 console.log("result", res.json());
-            });
+                materialize.toast(`Success Add User ${res.json().email}`, 2000);
+                this.user = new User();
+                this.getUsers();
+            }, (err) => {
+                if (err.status === 400) {
+                    this.errors = _.groupBy(err.json(), (err: ValidationResult) => {
+                        return err.field;
+                    });
 
-        var results = Validator.validate(User, this.user);
-        console.log(results);
-        console.log(this.user);
+                } else {
+                    console.error('err', err);
+                }
+            });
+    }
+
+    destroy(user: User) {
+        this.httpManager.delete(`/app/user/${user.id}`)
+            .subscribe(() => {
+                materialize.toast('Delete User ' + user.email, 2000);
+                this.getUsers();
+            })
     }
 
     ngOnInit() {
-        this.getUsers((users) => {
-            console.log(users);
-        });
-        console.log(this);
+        this.getUsers();
     }
 
 }

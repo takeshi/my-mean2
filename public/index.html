@@ -3,16 +3,18 @@
 
 <head>
 
-    <title>White Hat</title>
+    <title>Scipio</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css">
-
-    <!-- 1. Load libraries -->
+    <link rel="stylesheet" href="node_modules/github-markdown-css/github-markdown.css">
+    <link rel="stylesheet" href="client/app.css">
+    
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/materialize-css/dist/js/materialize.js"></script>
-
+    <script src="node_modules/markdown/lib/markdown.js"></script>
+    
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
@@ -21,7 +23,6 @@
     <script src="node_modules/angular2/bundles/http.dev.js"></script>
 
 
-    <!-- 2. Configure SystemJS -->
     <script>
         System.config({
         packages: {        
@@ -45,8 +46,6 @@
     </script>
 
 </head>
-
-<!-- 3. Display the application -->
 
 <body>
     <my-app>Loading...</my-app>

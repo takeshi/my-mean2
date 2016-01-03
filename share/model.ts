@@ -1,2 +1,4 @@
-export {User} from './model/user';
-export {Validator, ValidationResult} from './util/validator';
+export * from './util/validator';
+
+export * from './model/user';
+export * from './model/ticket';

@@ -1,3 +1,4 @@
+import * as rx from 'rxjs';
 import {Http, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/core';
 
@@ -17,7 +18,20 @@ export class HttpManager {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.post(url, JSON.stringify(data), { headers: headers });
+        var obersable = this.http.post(url, JSON.stringify(data), { headers: headers });
+
+        return obersable;
     }
+
+    delete(url: string) {
+
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        var obersable = this.http.delete(url, { headers: headers });
+
+        return obersable;
+    }
+
 
 }

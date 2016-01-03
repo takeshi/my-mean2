@@ -1,23 +1,18 @@
-import * as mongoose from 'mongoose';
-import {User} from '../../share/model';
 export {User} from '../../share/model';
+import {User} from '../../share/model';
+import {db} from '../db';
+import * as sequelize from 'sequelize';
 
-export interface UserDocument extends User, mongoose.Document {
+"use strict";
 
-}
-
-var userSchema: mongoose.Schema = new mongoose.Schema(
-    {
-        password: String,
-        email: String
+export var UserRepository = db.define<User, {}>('user', {
+    email: {
+        type: sequelize.STRING
     },
-    {
-        collection: 'User'
+    password: {
+        type: sequelize.STRING,
+        get: () => {
+            return '*****';
+        }
     }
-);
-
-interface _UserModel extends mongoose.Model<UserDocument> {
-
-}
-
-export var UserModel = <_UserModel>mongoose.model('User', userSchema);
+});

@@ -1,20 +1,24 @@
+"use strict";
+
 export interface ValidatorConfig {
     message?: string
 }
 
 
-export function createValidationDecorator(decorator: Function, config: ValidatorConfig, constraint: Constraint) {
+export function createValidationDecorator(decorator: Function, config: ValidatorConfig, constraint: Constraint, required: boolean) {
     return function(instance: any, field: string) {
-        addValidator(instance, field, decorator, config, constraint);
+        addValidator(instance, field, decorator, config, constraint, required);
     }
 }
 
-function addValidator(instance: any, field: string, decorator: Function, config: ValidatorConfig, constraint: Constraint) {
+function addValidator(instance: any, field: string, decorator: Function, config: ValidatorConfig, constraint: Constraint, required: boolean) {
     var validators = Validator.getValidators(instance.constructor);
 
     validators.push({
         validate: (instance: any) => {
-
+            if (required && !instance[field]) {
+                return null;
+            }
             var result = constraint(instance[field]);
             if (result) {
                 return null;
@@ -47,7 +51,7 @@ export interface ValidationResult {
 
 
 interface ValidationInvoker {
-    validate(clazz: any, instance: any): ValidationResult;
+    validate(instance: any): ValidationResult;
 }
 
 export abstract class Validator {
@@ -63,7 +67,7 @@ export abstract class Validator {
     static validate(clazz: any, instance: any) {
         var results: ValidationResult[] = [];
         Validator.getValidators(clazz).forEach((validator) => {
-            var result = validator.validate(clazz, instance);
+            var result = validator.validate(instance);
             if (result) {
                 results.push(result);
             }

@@ -1,0 +1,12 @@
+<div class="row">
+    <form class="col s6">
+        <h6>Markdown</h6>
+        <textarea [style.background]="'#eee'" materializedTextarea [(ngModel)]="ticket.desc" class="materialize-textarea"></textarea>
+    </form>
+
+    <div class="col s6">
+        <h6>Preview</h6>
+        <article class="markdown-body" [innerHtml]="markdown()">
+        </article>
+    </div>
+</div>

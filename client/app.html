@@ -1,26 +1,33 @@
-<nav>
-    <div class="green accent-4 nav-wrapper">
-        <a href="#" class="brand-logo left">Green Hat</a>
-        <ul class="right">
-            <li><a [routerLink]="['UserComponent']" >user</a></li>
-        </ul>
+<div>
+    <nav class="green">
+        <div class="accent-4 nav-wrapper container">
+            <a href="#" class="brand-logo left">Scipio</a>
+            <ul class="right">
+                <li><a [routerLink]="['Ticket']">ticket</a></li>
+                <li><a [routerLink]="['User']">user</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /.container -->
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <router-outlet></router-outlet>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+
     </div>
-</nav>
-<!-- /.container -->
-
-<div class="container marketing">
-   
-    <!-- Three columns of text below the carousel -->
-    <router-outlet></router-outlet>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
+    <!-- /.container -->
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy;Company, Inc.</p>
+        <div class="container">
+            <p>&copy;Cornelius Company, Inc.</p>
+        </div>
     </footer>
 
 </div>
-<!-- /.container -->
