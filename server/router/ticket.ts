@@ -1,5 +1,5 @@
 import * as express from 'express';
-import {TicketRepository}  from '../model/ticket';
+import {TicketRepository, AUTHOR}  from '../model/ticket';
 import * as tryCatch from '../util/try_catch';
 
 import * as tracker from '../model/tracker';
@@ -16,10 +16,8 @@ app.get('/', (req, res) => {
         var tickets = await TicketRepository.findAll({
             include: [
                 tracker.TrackerRepository,
-                {
-                    model: user.UserRepository,
-                    as: 'author'
-                }
+                AUTHOR,
+                history.TICKET_HISTORY
             ]
         });
         res.json(tickets);
@@ -29,10 +27,7 @@ app.get('/', (req, res) => {
 crud.createCrud(app, TicketRepository, Ticket, {
     include: [
         tracker.TrackerRepository,
-        {
-            model: user.UserRepository,
-            as: 'author'
-        },
-        history.TicketHistoryRepository
+        AUTHOR,
+        history.TICKET_HISTORY
     ]
 });

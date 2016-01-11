@@ -15,3 +15,5 @@ export interface TicketHistoryEntity extends share.TicketHistory,
 
 export var TicketHistoryRepository =
     createRepository<TicketHistoryEntity, share.TicketHistory>(share.TicketHistory);
+
+export var TICKET_HISTORY = { model: TicketHistoryRepository, as: 'histories' };

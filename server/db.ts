@@ -17,11 +17,11 @@ export var db = new sequelize('database', 'username', 'password', {
 });
 
 export function createRepository<K, V>(model: any) {
-    return db.define<K, V>(model.name, toDefineAttribute(model));
+    return db.define<K, V>(_.camelCase(model.name), toDefineAttribute(model));
 }
 
 function getRepository(clazz: any) {
-    return db.model(clazz.name);
+    return db.model(_.camelCase(clazz.name));
 }
 
 
@@ -29,7 +29,7 @@ function getRepositoryByField(clazz: any, field: string) {
     var type = Reflect.getMetadata('design:type', new clazz, field);
 
     console.log(clazz.name, field, type);
-    return db.model(type.name);
+    return db.model(_.camelCase(clazz.name));
 }
 
 
@@ -37,13 +37,13 @@ export function createRelation(clazz: any) {
     var repository = getRepository(clazz);
 
     for (var relation of toRelations(clazz, 'belongs')) {
-        var ref = getRepositoryByField(clazz, relation.name);
+        var ref = db.model(_.camelCase(relation.type));
         repository.belongsTo(ref, relation.options);
     }
 
-    // for (var relation of toRelations(clazz, 'hasMany')) {
-    //     var ref = getRepository(relation.type);
-    //     repository.hasMany(ref, relation.options);
-    // }
+    for (var relation of toRelations(clazz, 'hasMany')) {
+        var ref = db.model(_.camelCase(relation.type));
+        repository.hasMany(ref, relation.options);
+    }
 
 }

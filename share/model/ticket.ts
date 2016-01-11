@@ -40,7 +40,9 @@ export class Ticket implements db.ModelBase {
     creator: User;
     creatorId: number;
 
-    @db.HasMany('TicketHistory')
+    @db.HasMany('TicketHistory', {
+        as: 'histories'
+    })
     histories: TicketHistory[];
 
 }

@@ -38,7 +38,8 @@ function relation(instance: any, field: string, options: sequelize.AssociationOp
 
 export function BelongsTo(type: string, options?: sequelize.AssociationOptionsBelongsTo) {
     return function(instance: any, field: string) {
-        relation(instance, field, options, 'belongs');
+        var r = relation(instance, field, options, 'belongs');
+        r.type = type;
     }
 }
 

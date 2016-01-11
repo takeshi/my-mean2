@@ -10,8 +10,9 @@ import * as sequelize from 'sequelize';
 
 export class TicketHistory implements db.ModelBase {
 
-    updateUserId: number;
+    @db.BelongsTo('User')
     updateUser: User;
+    updateUserId: number;
 
     @db.Persistence({
         type: sequelize.NUMERIC

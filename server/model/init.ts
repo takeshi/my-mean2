@@ -5,19 +5,19 @@ import * as share from '../share';
 import {UserRepository} from './user';
 import {TicketRepository} from './ticket';
 import {TrackerRepository} from './tracker';
-import {TicketHistoryRepository} from './ticket_history';
+import {TicketHistoryRepository, TICKET_HISTORY} from './ticket_history';
 
 export async function init() {
     try {
         createRelation(share.Ticket);
         createRelation(share.User);
-        createRelation(share.Tracker);
         createRelation(share.TicketHistory);
+        createRelation(share.Tracker);
 
         await UserRepository.sync({ force: true });
         await TrackerRepository.sync({ force: true });
-        await TicketRepository.sync({ force: true });
         await TicketHistoryRepository.sync({ force: true });
+        await TicketRepository.sync({ force: true });
 
         var user;
         await db.transaction(async (t) => {
@@ -53,13 +53,15 @@ export async function init() {
                         },
                     ]
                 }, {
+                    include: [TICKET_HISTORY],
                     transaction: t
                 });
 
         });
 
+
     } catch (e) {
-        console.log(e,e.stack);
+        console.log(e, e.stack);
         throw e;
     }
 }
