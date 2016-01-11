@@ -1,6 +1,5 @@
 /// <reference path="../../typings/validator/validator.d.ts" />
 "use strict";
-import 'reflect-metadata';
 
 import * as validator from 'validator';
 import {Email, Require} from '../util/validator.decorator';

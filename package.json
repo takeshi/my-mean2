@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc:client": "./node_modules/typescript/bin/tsc -w -p ./client/",
-    "tsc:server": "./node_modules/typescript/bin/tsc -w",
+    "tsc:client": "node ./node_modules/typescript/bin/tsc -w -p ./client/",
+    "tsc:server": "node ./node_modules/typescript/bin/tsc -w",
     "livereloead": "node livereload",
-    "server": "./node_modules/node-dev/bin/node-dev index.js",
-    "sass": "./node_modules/node-sass/bin/node-sass -o dist/client/client -r client/ dist/client/app.css --source-map true",
-    "sass:w": "./node_modules/node-sass/bin/node-sass -w  -o dist/client/client -r client/ dist/client/app.css --source-map true",
+    "server": "node ./node_modules/node-dev/bin/node-dev index.js",
+    "sass": "node ./node_modules/node-sass/bin/node-sass -o dist/client/client -r client/ dist/client/app.css --source-map true",
+    "sass:w": "node ./node_modules/node-sass/bin/node-sass -w  -o dist/client/client -r client/ dist/client/app.css --source-map true",
     "start": "concurrent \"npm run server\" \"npm run livereloead\" \"npm run tsc:server\" \"npm run tsc:client\"  \"npm run sass\"  \"npm run sass:w\"  "
   },
   "dependencies": {
@@ -20,15 +20,17 @@
     "express": "^4.13.3",
     "github-markdown-css": "^2.1.1",
     "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
     "markdown": "^0.5.0",
     "materialize-css": "^0.97.5",
-    "reflect-metadata": "^0.1.2",
+    "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
     "sequelize": "^3.15.1",
     "shim": "^0.6.0",
     "sqlite3": "^3.1.1",
     "systemjs": "0.19.6",
     "tether": "^1.1.1",
+    "validator": "^4.5.0",
     "zone.js": "0.5.10"
   },
   "devDependencies": {
