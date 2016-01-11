@@ -1,15 +1,11 @@
 "use strict";
 
-import * as share from '../../share/model/tracker';
 import * as sequelize from 'sequelize';
-import {db} from '../db';
+import {db, toDefineAttribute, createRepository} from '../db';
 
-export interface Tracker extends share.Tracker, sequelize.Instance<share.Tracker, {}> {
+import * as share from '../share';
+
+export interface TrackerEntity extends share.Tracker, sequelize.Instance<share.Tracker, share.Tracker> {
 }
 
-
-export var TrackerRepository = db.define<Tracker, {}>('tracker', {
-    name: {
-        type: sequelize.STRING
-    }
-});
+export var TrackerRepository = createRepository<TrackerEntity, share.Tracker>(share.Tracker);

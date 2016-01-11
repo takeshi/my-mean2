@@ -1,21 +1,11 @@
 "use strict";
 
-import * as share from '../../share/model/user';
 import * as sequelize from 'sequelize';
-import {db} from '../db';
+import {db, toDefineAttribute, createRepository} from '../db';
 
-export interface User extends share.User, sequelize.Instance<share.User, {}> {
-}
+import {User} from '../share';
 
-export var UserRepository = db.define<User, {}>('user', {
-    email: {
-        type: sequelize.STRING
-    },
-    password: {
-        type: sequelize.STRING,
-        get: () => {
-            return '*****';
-        }
-    }
-});
+export interface UserEntity extends User, sequelize.Instance<UserEntity, User> {
+};
 
+export var UserRepository = createRepository(User);

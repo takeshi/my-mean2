@@ -1,28 +1,46 @@
+/// <reference path="../../node_modules/reflect-metadata/reflect-metadata" />
+
 "use strict";
+
+import * as Reflect from 'reflect-metadata';
+
 import {User} from './user';
 import {Tracker} from './tracker'
+import {TicketHistory} from './ticket_history';
+import * as db from './db';
 
-export class Ticket {
+import * as sequelize from 'sequelize';
 
-    private author: User;
+export class Ticket implements db.ModelBase {
 
-    setAuthor(author: User) {
-        this.author = author;
-    }
+    @db.Persistence({
+        type: sequelize.STRING
+    })
+    desc: string;
 
-    getAuthor() {
-        return this.author;
-    }
+    @db.Persistence({
+        type: sequelize.STRING
+    })
+    title: string;
 
-    desc: string
+    @db.BelongsTo('Tracker')
+    tracker: Tracker;
+    trackerId: number = 1;
 
-    private tracker: Tracker
+    @db.BelongsTo('User', {
+        as: 'author'
+    })
+    author: User;
+    authorId: number;
 
-    setTracker(tracker: Tracker) {
-        this.tracker = tracker;
-    }
 
-    getTracker() {
-        return this.tracker;
-    }
+    @db.BelongsTo('User', {
+        as: 'creator'
+    })
+    creator: User;
+    creatorId: number;
+
+    @db.HasMany('TicketHistory')
+    histories: TicketHistory[];
+
 }

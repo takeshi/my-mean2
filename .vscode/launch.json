@@ -5,10 +5,10 @@
 			"name": "Launch",
 			"type": "node",
 			"request": "launch",
-			"program": "index.js",
+			"program": "server/boot.ts",
 			"stopOnEntry": false,
 			"args": [],
-			"cwd": ".",
+			"cwd": "./server",
 			"runtimeExecutable": null,
 			"runtimeArgs": [
 				"--nolazy"
@@ -17,8 +17,8 @@
 				"NODE_ENV": "development"
 			},
 			"externalConsole": false,
-			"sourceMaps": false,
-			"outDir": null
+			"sourceMaps": true,
+			"outDir": "./dist/server"
 		},
 		{
 			"name": "Attach",

@@ -5,28 +5,39 @@
         <a *ngIf="preview===false" class="waves-effect waves-light btn" (click)="preview=true">Preview</a>
     </div>
 
-    <form class="col s12" *ngIf="preview === false">
+    <div style="clear:both" *ngIf="preview === false">
+        <div class="col s6">
 
-        <div class="input-field col s12">
-            <h6 class="input-label">Tracker</h6>
-            <select materializedSelect>
-                <option *ngFor="#tracker of trackers" [value]="tracker">{{tracker.name}}</option>
-            </select>
-        </div>
-        
+            <div class="input-field col s12">
+                <h6 class="input-label">Title</h6>
+                <input id="title" [(ngModel)]="ticket.title" type="text">
+            </div>
 
-        <div class="input-field col s12">
-            <h6 class="input-label">Title</h6>
-            <input id="title" [(ngModel)]="ticket.title" type="text">
         </div>
 
+        <div class="col s6">
 
-        <div class="input-field col s12">
-            <h6 class="input-label">Description</h6>
-            <textarea id="Description" materializedTextarea [(ngModel)]="ticket.desc" class="materialize-textarea"></textarea>
+            <div class="input-field col s12">
+                <h6 class="input-label">Tracker</h6>
+                <select [(ngModel)]="ticket.trackerId">
+                    <option *ngFor="#tracker of trackers,#i=index" [value]="tracker.id">{{tracker.name}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="col s12">
+            <div class="input-field col s12">
+                <h6 class="input-label">Description</h6>
+                <textarea id="Description" materializedTextarea [(ngModel)]="ticket.desc" class="materialize-textarea"></textarea>
+            </div>
+
+            <button class="btn right" (click)="submit()">
+                Submit
+            </button>
+
         </div>
 
-    </form>
+    </div>
 
     <div class="col s12" *ngIf="preview === true">
         <h5>{{ticket.title}}</h5>

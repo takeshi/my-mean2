@@ -1,9 +1,14 @@
 "use strict";
+import 'reflect-metadata';
 
-export class Tracker {
+import * as db from './db';
+import * as sequelize from 'sequelize';
 
-    id: string
+export class Tracker implements db.ModelBase {
 
+    @db.Persistence({
+        type: sequelize.STRING
+    })
     name: string
 
 }

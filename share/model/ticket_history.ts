@@ -1,0 +1,25 @@
+"use strict";
+import 'reflect-metadata';
+
+import {User} from './user';
+import {Tracker} from './tracker'
+import {Ticket} from './ticket'
+import * as db from './db';
+
+import * as sequelize from 'sequelize';
+
+export class TicketHistory implements db.ModelBase {
+
+    updateUserId: number;
+    updateUser: User;
+
+    @db.Persistence({
+        type: sequelize.NUMERIC
+    })
+    version: number;
+
+    @db.BelongsTo('Ticket')
+    ticket: Ticket;
+    ticketId: number;
+
+}

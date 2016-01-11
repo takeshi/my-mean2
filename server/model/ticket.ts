@@ -1,20 +1,23 @@
 "use strict";
 
-import * as share from '../../share/model/ticket';
-
-import {UserRepository} from './user';
-import {TrackerRepository} from './tracker';
 import * as sequelize from 'sequelize';
-import {db} from '../db';
+import {db, toDefineAttribute, createRepository} from '../db';
 
-export interface Ticket extends share.Ticket, sequelize.Instance<share.Ticket,{}> {
+import * as share from '../share';
+
+import {UserEntity, UserRepository} from './user';
+import {TrackerEntity, TrackerRepository} from './tracker';
+
+export interface TicketEntity extends share.Ticket, sequelize.Instance<share.Ticket, share.Ticket> {
+
+    setAuthor(author: UserEntity, option?: sequelize.InstanceUpdateOptions);
+    getAuthor(): Promise<UserEntity>;
+    setTracker(tracker: UserEntity, option?: sequelize.InstanceUpdateOptions);
+    getTracker(): Promise<TrackerEntity>;
+
 }
 
-export var TicketRepository = db.define<Ticket, {}>('ticket', {
-    desc: {
-        type: sequelize.STRING
-    }
-});
+export var TicketRepository = createRepository<TicketEntity, share.Ticket>(share.Ticket);
 
-TicketRepository.belongsTo(UserRepository, { as: 'author' });
-TicketRepository.belongsTo(TrackerRepository, { as: 'tracker' });
+// TicketRepository.belongsTo(UserRepository, { as: 'author' });
+// TicketRepository.belongsTo(TrackerRepository);

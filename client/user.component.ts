@@ -1,7 +1,7 @@
 /// <reference path="../typings/lodash/lodash" />
 
 import {Component, OnInit} from 'angular2/core';
-import {User, Validator, ValidationResult} from '../share/model';
+import {User, Validator, ValidationResult} from '../share/share';
 import {Http, Headers} from 'angular2/http';
 import {HttpManager} from './util/http';
 import {materialize} from './util/materialize';
@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
                     callback(this.users);
                 }
             });
-
+            
     }
 
     errors: _.Dictionary<ValidationResult[]>;

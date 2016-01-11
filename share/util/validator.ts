@@ -50,7 +50,7 @@ export interface ValidationResult {
 }
 
 
-interface ValidationInvoker {
+export interface ValidationInvoker {
     validate(instance: any): ValidationResult;
 }
 

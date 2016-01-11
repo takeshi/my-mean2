@@ -1,4 +1,5 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/express/express.d.ts" />
+/// <reference path="../typings/body-parser/body-parser.d.ts" />
 "use strict";
 
 import * as express from 'express';
@@ -21,7 +22,7 @@ app.listen(3000, () => {
     console.log('start server 3000');
 });
 
-var subRouters = ['user','tracker']
+var subRouters = ['user','tracker','ticket']
 
 subRouters.forEach((router) => {
     var subapp = require('./router/' + router);
