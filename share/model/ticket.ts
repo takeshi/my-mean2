@@ -1,11 +1,10 @@
 /// <reference path="../../node_modules/reflect-metadata/reflect-metadata" />
-
-"use strict";
+'use strict';
 
 import * as Reflect from 'reflect-metadata';
 
 import {User} from './user';
-import {Tracker} from './tracker'
+import {Tracker} from './tracker';
 import {TicketHistory} from './ticket_history';
 import * as db from './db';
 

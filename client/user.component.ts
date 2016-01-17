@@ -30,16 +30,15 @@ export class UserComponent implements OnInit {
                     callback(this.users);
                 }
             });
-            
     }
 
     errors: _.Dictionary<ValidationResult[]>;
 
     submit() {
-        var errors = Validator.validate(User, this.user);
+        let errors = Validator.validate(User, this.user);
         if (errors) {
             this.errors = _.groupBy(errors, (err) => {
-                return err.field
+                return err.field;
             });
             console.log(this.errors);
             return;
@@ -48,7 +47,7 @@ export class UserComponent implements OnInit {
 
         this.httpManager.post('/app/user', this.user)
             .subscribe((res) => {
-                console.log("result", res.json());
+                console.log('result', res.json());
                 materialize.toast(`Success Add User ${res.json().email}`, 2000);
                 this.user = new User();
                 this.getUsers();
@@ -69,7 +68,7 @@ export class UserComponent implements OnInit {
             .subscribe(() => {
                 materialize.toast('Delete User ' + user.email, 2000);
                 this.getUsers();
-            })
+            });
     }
 
     ngOnInit() {

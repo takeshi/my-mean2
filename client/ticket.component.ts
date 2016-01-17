@@ -35,9 +35,9 @@ export class TicketComponent implements OnInit {
     markdown() {
 
         if (!this.ticket || !this.ticket.desc) {
-            return "";
+            return '';
         }
-        var html = markdown.toHTML(this.ticket.desc);
+        let html = markdown.toHTML(this.ticket.desc);
         return html;
     }
 

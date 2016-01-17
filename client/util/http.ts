@@ -13,20 +13,20 @@ export class HttpManager {
 
     post(url: string, data: any) {
 
-        var headers = new Headers();
+        let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        var obersable = this.http.post(url, JSON.stringify(data), { headers: headers });
+        let obersable = this.http.post(url, JSON.stringify(data), { headers: headers });
 
         return obersable;
     }
 
     delete(url: string) {
 
-        var headers = new Headers();
+        let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        var obersable = this.http.delete(url, { headers: headers });
+        let obersable = this.http.delete(url, { headers: headers });
 
         return obersable;
     }

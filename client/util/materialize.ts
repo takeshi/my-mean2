@@ -1,15 +1,13 @@
 /// <reference path="../../typings/jquery/jquery" />
 
-interface _Materialize {
 
+declare var Materialize: {
     toast(message: string,
         displayLength?: number,
         className?: string,
         completeCallback?: () => void);
+};
 
-}
-
-declare var Materialize: _Materialize;
 export var materialize = Materialize;
 
 import {Directive, ElementRef, Renderer, Input, OnInit, OnChanges, AfterViewInit } from 'angular2/core';
@@ -23,7 +21,7 @@ export class MaterializedTextarea implements OnInit {
     }
 
     ngOnInit() {
-        var $target = jQuery(this.el.nativeElement);
+        let $target = jQuery(this.el.nativeElement);
         $target.val(this.desc);
         $target.trigger('autoresize');
     }
@@ -38,16 +36,16 @@ export class MaterializedTextarea implements OnInit {
 })
 export class MaterializedSelect implements OnInit, AfterViewInit {
 
-    $target: any
-    
+    $target: any;
+
     constructor(private el: ElementRef, renderer: Renderer) {
         this.$target = jQuery(this.el.nativeElement);
     }
 
     ngAfterViewInit() {
-        setTimeout(()=>{
-            this.$target.material_select();        
-        },0);
+        setTimeout(() => {
+            this.$target.material_select();
+        }, 0);
     }
 
     ngOnInit() {

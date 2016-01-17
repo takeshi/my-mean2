@@ -1,5 +1,6 @@
 /// <reference path="../../typings/sequelize/sequelize" />
 import * as sequelize from 'sequelize';
+'use strict';
 
 export function toDefineAttribute(clazz: any): sequelize.DefineAttributes {
     if (!clazz._defineAttribute) {
@@ -26,8 +27,8 @@ export function toRelations(clazz: any, type: string): BelongsRelation[] {
 
 function relation(instance: any, field: string, options: sequelize.AssociationOptions, type: string) {
 
-    var relations = toRelations(instance.constructor, type);
-    var relation: BelongsRelation = {
+    let relations = toRelations(instance.constructor, type);
+    let relation: BelongsRelation = {
         name: field,
         options: options
     };
@@ -38,24 +39,24 @@ function relation(instance: any, field: string, options: sequelize.AssociationOp
 
 export function BelongsTo(type: string, options?: sequelize.AssociationOptionsBelongsTo) {
     return function(instance: any, field: string) {
-        var r = relation(instance, field, options, 'belongs');
+        let r = relation(instance, field, options, 'belongs');
         r.type = type;
-    }
+    };
 }
 
 export function HasMany(type: string, options?: sequelize.AssociationOptionsHasMany) {
     return function(instance: any, field: string) {
-        var r = relation(instance, field, options, 'hasMany');
+        let r = relation(instance, field, options, 'hasMany');
         r.type = type;
-    }
+    };
 }
 
 
 export function Persistence(option: string | sequelize.DataTypeAbstract | sequelize.DefineAttributeColumnOptions) {
     return function(instance: any, field: string) {
-        var attr = toDefineAttribute(instance.constructor);
+        let attr = toDefineAttribute(instance.constructor);
         attr[field] = option;
-    }
+    };
 }
 
 export interface ModelBase {

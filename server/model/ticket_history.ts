@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import * as sequelize from 'sequelize';
 import {db, toDefineAttribute, createRepository} from '../db';

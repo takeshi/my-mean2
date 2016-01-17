@@ -1,5 +1,5 @@
 /// <reference path="../../typings/validator/validator.d.ts" />
-"use strict";
+'use strict';
 import 'reflect-metadata';
 
 import * as validator from 'validator';
@@ -9,8 +9,8 @@ import * as db from './db';
 
 
 export class User implements db.ModelBase {
-    
-    id:number;
+
+    id: number;
 
     @db.Persistence({
         type: sequelize.STRING

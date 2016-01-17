@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import {db, createRelation} from '../db';
 import * as share from '../share';
@@ -19,7 +19,7 @@ export async function init() {
         await TicketHistoryRepository.sync({ force: true });
         await TicketRepository.sync({ force: true });
 
-        var user;
+        let user;
         await db.transaction(async (t) => {
 
             user = await UserRepository.create(<share.User>{
@@ -27,7 +27,7 @@ export async function init() {
                 password: 'test'
             }, { transaction: t });
 
-            var trackers = await TrackerRepository.bulkCreate([
+            let trackers = await TrackerRepository.bulkCreate([
                 { name: 'Bug' },
                 { name: 'Q&A' },
                 { name: 'Theme' },
@@ -38,7 +38,7 @@ export async function init() {
 
         await db.transaction(async (t) => {
 
-            var ticket = await TicketRepository.create(
+            let ticket = await TicketRepository.create(
                 <share.Ticket>{
                     title: 'sample',
                     desc: '#sample',
