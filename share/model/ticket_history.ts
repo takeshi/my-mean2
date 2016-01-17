@@ -1,5 +1,4 @@
 'use strict';
-import 'reflect-metadata';
 
 import {User} from './user';
 import {Tracker} from './tracker'
