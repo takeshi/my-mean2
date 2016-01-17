@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 export interface ValidatorConfig {
-    message?: string
+    message?: string;
 }
 
 

@@ -1,5 +1,7 @@
+'use strict';
+
 import * as express from 'express';
-import {TicketRepository, AUTHOR}  from '../model/ticket';
+import {TicketRepository}  from '../model/ticket';
 import * as tryCatch from '../util/try_catch';
 
 import * as tracker from '../model/tracker';
@@ -9,15 +11,15 @@ import * as history from '../model/ticket_history';
 import * as crud from '../util/crud';
 import {Ticket} from '../../share/model/ticket';
 
-export var app = express();
+export let app = express();
 
 app.get('/', (req, res) => {
     tryCatch.try_catch(req, res, async () => {
-        var tickets = await TicketRepository.findAll({
+        let tickets = await TicketRepository.findAll({
             include: [
-                tracker.TrackerRepository,
-                AUTHOR,
-                history.TICKET_HISTORY
+                Ticket.TRACKER,
+                Ticket.AUTHOR,
+                Ticket.HISTORIES
             ]
         });
         res.json(tickets);
@@ -26,8 +28,8 @@ app.get('/', (req, res) => {
 
 crud.createCrud(app, TicketRepository, Ticket, {
     include: [
-        tracker.TrackerRepository,
-        AUTHOR,
-        history.TICKET_HISTORY
+        Ticket.TRACKER,
+        Ticket.AUTHOR,
+        Ticket.HISTORIES
     ]
 });

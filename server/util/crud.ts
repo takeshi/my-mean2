@@ -1,3 +1,5 @@
+'use strict';
+
 import * as express from 'express';
 import {Validator, ValidationResult} from '../../share/util/validator';
 import * as Sequelize from 'sequelize';
@@ -43,9 +45,9 @@ export function createCrud(app: express.Express, repository: Sequelize.Model<{},
             if (model.id) {
                 var v = await repository.create(model);
                 res.json(v);
-            }else{
+            } else {
                 await repository.insertOrUpdate(model);
-                res.json(model);                
+                res.json(model);
             }
         });
     });

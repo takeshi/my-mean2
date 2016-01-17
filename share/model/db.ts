@@ -58,9 +58,11 @@ export function Persistence(option: string | sequelize.DataTypeAbstract | sequel
         attr[field] = option;
     };
 }
+'use strict';
 
 export interface ModelBase {
     id?: number;
     createdAt?: Date;
     updatedAt?: Date;
 }
+

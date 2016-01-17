@@ -1,14 +1,14 @@
 /// <reference path="../typings/express/express.d.ts" />
 /// <reference path="../typings/body-parser/body-parser.d.ts" />
-"use strict";
+'use strict';
 
 import * as express from 'express';
 import {db} from './db';
 import * as bodyParser from 'body-parser';
 
-var app = express();
+let app = express();
 
-["node_modules", "client", "share"].forEach((dir) => {
+['node_modules', 'client', 'share'].forEach((dir) => {
     app.use('/' + dir, express.static('./' + dir));
 });
 
@@ -22,10 +22,10 @@ app.listen(3000, () => {
     console.log('start server 3000');
 });
 
-var subRouters = ['user','tracker','ticket']
+let subRouters = ['user', 'tracker', 'ticket']
 
 subRouters.forEach((router) => {
-    var subapp = require('./router/' + router);
+    let subapp = require('./router/' + router);
     app.use('/app/' + router, subapp.app);
 });
 

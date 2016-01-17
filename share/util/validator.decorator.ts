@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import * as validator from 'validator';
 import {ValidatorConfig, createValidationDecorator} from './validator';

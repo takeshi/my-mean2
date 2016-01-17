@@ -21,6 +21,3 @@ export interface TicketEntity extends share.Ticket, sequelize.Instance<share.Tic
 }
 
 export var TicketRepository = createRepository<TicketEntity, share.Ticket>(share.Ticket);
-export var AUTHOR = { model: UserRepository, as: 'author' };
-export var CREATOR = { model: UserRepository, as: 'creator' };
-

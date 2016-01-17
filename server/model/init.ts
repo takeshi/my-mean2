@@ -5,7 +5,7 @@ import * as share from '../share';
 import {UserRepository} from './user';
 import {TicketRepository} from './ticket';
 import {TrackerRepository} from './tracker';
-import {TicketHistoryRepository, TICKET_HISTORY} from './ticket_history';
+import {TicketHistoryRepository} from './ticket_history';
 
 export async function init() {
     try {
@@ -53,7 +53,7 @@ export async function init() {
                         },
                     ]
                 }, {
-                    include: [TICKET_HISTORY],
+                    include: [share.Ticket.HISTORIES],
                     transaction: t
                 });
 
